@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>桃山ランナー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="title-screen" class="screen">
+        <h1>桃山ランナー</h1>
+        <button id="start-button">スタート</button>
+    </div>
+
+    <div id="faculty-screen" class="screen hidden">
+        <h2>学部を選択してください</h2>
+        <div id="faculty-buttons">
+            <button class="faculty-button" data-faculty="社会学部">社会学部</button>
+            <button class="faculty-button" data-faculty="経済学部">経済学部</button>
+            <button class="faculty-button" data-faculty="法学部">法学部</button>
+        </div>
+        <div id="faculty-info" class="hidden">
+            <p id="selected-faculty-display">選んだ学部: </p>
+            <p id="faculty-feature-display">特徴: </p>
+        </div>
+        <button id="start-game-button" class="hidden">スタート</button>
+        <button id="back-to-title-from-faculty">戻る</button>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <div id="game-header">
+            <p id="distance-display">走行距離: 0 ピクセル</p>
+        </div>
+        <canvas id="game-canvas" width="960" height="400"></canvas>
+        <div id="game-footer">
+            <p id="control-hint">スペースキーでジャンプ！</p>
+        </div>
+        <p id="game-over-message" class="hidden">ゲームオーバー</p>
+        <button id="play-again-button" class="hidden">もう一度遊ぶ</button>
+    </div>
+
+    <div id="clear-screen" class="screen hidden">
+        <h2>桃山学院大学に到着！！</h2>
+        <p id="score-display">走行距離: 0 ピクセル</p>
+        <button id="play-again-from-clear-button">もう一度遊ぶ</button>
+        <button id="back-to-title-button">タイトルに戻る</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

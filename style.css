@@ -1,0 +1,253 @@
+﻿body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f8ff;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.screen {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1000px;
+    width: min(100%, 1000px);
+    box-sizing: border-box;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+#title-screen h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#start-button {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#start-button:hover {
+    background-color: #45a049;
+}
+
+#faculty-screen h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#faculty-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.faculty-button {
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
+    padding: 12px 20px;
+    cursor: pointer;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.faculty-button:hover {
+    background-color: #1976d2;
+}
+
+.faculty-button.selected {
+    background-color: #0d47a1;
+}
+
+#faculty-info {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-radius: 5px;
+}
+
+#start-game-button {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#start-game-button:hover {
+    background-color: #45a049;
+}
+
+#back-to-title-from-faculty {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#back-to-title-from-faculty:hover {
+    background-color: #d84315;
+}
+
+#game-screen {
+    padding: 12px;
+    width: min(100%, 1000px);
+}
+
+#game-header {
+    margin-bottom: 10px;
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: #333;
+    font-weight: bold;
+}
+
+#game-canvas {
+    border: 3px solid #333;
+    background-color: #87ceeb;
+    border-radius: 5px;
+    width: min(960px, 100%);
+    height: auto;
+    aspect-ratio: 960 / 400;
+    display: block;
+    margin: 0 auto;
+    touch-action: none;
+}
+
+#game-footer {
+    margin-top: 10px;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    color: #555;
+}
+
+#game-over-message {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    color: red;
+    margin-top: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+    word-break: keep-all;
+}
+
+#play-again-button {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#play-again-button:hover {
+    background-color: #d84315;
+}
+
+#clear-screen h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 20px;
+    color: #4caf50;
+}
+
+#score-display {
+    font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+#play-again-from-clear-button {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#play-again-from-clear-button:hover {
+    background-color: #e68900;
+}
+
+#back-to-title-button {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #9c27b0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#back-to-title-button:hover {
+    background-color: #7b1fa2;
+}
+
+/* スマホ向け調整: 画面幅が狭いときに余白・フォント・並びを最適化 */
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+        align-items: flex-start;
+    }
+
+    .screen {
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    #faculty-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .faculty-button,
+    #start-button,
+    #start-game-button,
+    #back-to-title-from-faculty,
+    #play-again-button,
+    #play-again-from-clear-button,
+    #back-to-title-button {
+        width: 100%;
+        min-height: 48px;
+        margin: 6px 0;
+    }
+
+    #start-game-button,
+    #play-again-from-clear-button {
+        margin-right: 0;
+    }
+
+    #game-header {
+        margin-bottom: 8px;
+    }
+
+    #game-footer {
+        margin-top: 8px;
+    }
+}
