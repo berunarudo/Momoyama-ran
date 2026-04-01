@@ -42,6 +42,7 @@ const titleScreen = document.getElementById('title-screen');
 const facultyScreen = document.getElementById('faculty-screen');
 const gameScreen = document.getElementById('game-screen');
 const clearScreen = document.getElementById('clear-screen');
+const gameCanvasElement = document.getElementById('game-canvas');
 const startButton = document.getElementById('start-button');
 const facultyButtons = document.querySelectorAll('.faculty-button');
 const backToTitleButton = document.getElementById('back-to-title-button');
@@ -68,6 +69,10 @@ function updateControlHint() {
         ? 'タップでジャンプ！'
         : 'スペースキーでジャンプ！';
 }
+
+// 二重入力ガード用（タップの連続発火を抑える）
+let lastTapJumpTime = 0;
+const TAP_JUMP_COOLDOWN_MS = 80;
 
 startButton.addEventListener('click', () => {
     showScreen('faculty');
@@ -134,16 +139,27 @@ document.addEventListener('keyup', (e) => {
 // スマホ操作対応:
 // ゲーム画面をタップしたらジャンプできるようにする
 function handleGameTapJump(e) {
+    // ゲームプレイ中以外は受け付けない
     if (currentScreen !== 'game' || gameOver || gameState !== 'playing') return;
-    if (e.target.closest('button')) return; // ボタンタップ時は誤ジャンプしない
-    e.preventDefault();
+
+    // 同時発火や連続タップでの二重入力を防ぐ
+    const now = Date.now();
+    if (now - lastTapJumpTime < TAP_JUMP_COOLDOWN_MS) return;
+    lastTapJumpTime = now;
+
+    // ブラウザ側のタップ挙動（スクロールなど）を止める
+    if (e.cancelable) {
+        e.preventDefault();
+    }
+
     jump();
 }
 
+// 入力対象を canvas のみに限定して誤作動を防ぐ
 if (window.PointerEvent) {
-    gameScreen.addEventListener('pointerdown', handleGameTapJump);
+    gameCanvasElement.addEventListener('pointerdown', handleGameTapJump, { passive: false });
 } else {
-    gameScreen.addEventListener('touchstart', handleGameTapJump, { passive: false });
+    gameCanvasElement.addEventListener('touchstart', handleGameTapJump, { passive: false });
 }
 window.addEventListener('resize', updateControlHint);
 
